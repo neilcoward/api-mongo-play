@@ -17,7 +17,7 @@ var routes = function(Book) {
 				next();
 			}
 			else {
-				res.status(404).send('no book found ');
+				res.status(404).send('no book found');
 			}
 		});
 	});
