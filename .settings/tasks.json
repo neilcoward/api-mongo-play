@@ -7,6 +7,14 @@
     ],
     "tasks": [
         {
+            "taskName": "vet",
+            "args": [],
+            "problemMatcher": [
+                "$jshint",
+                "$jshint-stylish"
+            ]
+        },
+        {
             "taskName": "test",
             "args": [],
             "isTestCommand": true
