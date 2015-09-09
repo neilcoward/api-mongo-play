@@ -4,6 +4,13 @@
 	// ONLY "node" and "mono" are supported, change "type" to switch.
 	"configurations": [
 		{
+			"name": "node gulp debugger",
+			"type": "node",
+			"program": "./node_modules/gulp/bin/gulp.js",
+			"stopOnEntry": true,
+			"runtimeArgs": ["--nolazy"]
+		},
+		{
 			// Name of configuration; appears in the launch configuration drop down menu.
 			//"name": "Launch index.js",
 			"name": "Launch API",
