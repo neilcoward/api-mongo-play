@@ -17,7 +17,7 @@ gulp.task('vet', function() {
 	.pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('default', function() {
+gulp.task('build', function() {
 	nodemon(config.nodeConfig)
 	.on('restart', function() {
 		console.log('Restarting');
