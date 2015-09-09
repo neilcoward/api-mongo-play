@@ -24,19 +24,21 @@ var bookController = function (Book) {
 					res.status(500).send(err);
 				}
 				else {
-					Grid.mongo = mongoose.mongo;
-					var conn = mongoose.connection;
-					/* jshint -W064 */
-					var gfs = Grid(conn.db);
-					var writestream = gfs.createWriteStream({
-						filename: path.basename(book.coverArtPath),
-						_id: book.coverArtId
-					});
-					fs.createReadStream(book.coverArtPath).pipe(writestream);
+					if (book.coverArtPath) {
+						Grid.mongo = mongoose.mongo;
+						var conn = mongoose.connection;
+						/* jshint -W064 */
+						var gfs = Grid(conn.db);
+						var writestream = gfs.createWriteStream({
+							filename: path.basename(book.coverArtPath),
+							_id: book.coverArtId
+						});
+						fs.createReadStream(book.coverArtPath).pipe(writestream);
 
-					writestream.on('close', function (file) {
-						console.log(file.filename + ' Written To DB');
-					});
+						writestream.on('close', function (file) {
+							console.log(file.filename + ' Written To DB');
+						});
+					}
 
 					res.status(201);
 					res.send(book);
@@ -69,6 +71,17 @@ var bookController = function (Book) {
 	var getBook = function (req, res) {
 		var returnBook = req.book.toJSON();
 		returnBook.links = {};
+
+		if (returnBook.coverArtId) {
+			Grid.mongo = mongoose.mongo;
+			var conn = mongoose.connection;
+			/* jshint -W064 */
+			var gfs = Grid(conn.db);
+			gfs.findOne({_id: returnBook.coverArtId}, function (err, file) {
+				console.log(file);
+			});
+		}
+
 		var newLink = 'http://' + req.headers.host + '/api/books?genre=' + returnBook.genre;
 		returnBook.links.FilterByThisGenre = newLink.replace(' ', '%20');
 		res.json(returnBook);
