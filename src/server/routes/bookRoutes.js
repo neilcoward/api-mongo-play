@@ -26,14 +26,20 @@ var routes = function (Book) {
 	});
 
 	bookRouter.use('/Books/:bookId/Cover/:coverId', function (req, res, next) {
-		Grid.mongo = mongoose.mongo;
-		var conn = mongoose.connection;
-		/* jshint -W064 */
-		var gfs = Grid(conn.db);
-		gfs.findOne({ _id: req.params.coverId }, function (err, file) {
-			console.log(file);
-		});
+		getFile(function (error, data) {
+			res.writeHead(200, { 'Content-Type': 'image/png' });
+			res.end(data, 'binary');
+		}, req.params.coverId);
 	});
+
+	var getFile = function (callback, id) {;
+		var db = mongoose.connection.db;
+		var GridStore = mongoose.mongo.GridStore;
+		var gs = new GridStore(db, new mongoose.Types.ObjectId(id), 'r');
+		gs.open(function (err, gs) {
+			gs.read(callback);
+		});
+	};
 
 	bookRouter.route('/Books/:bookId')
 		.get(bookController.getBook)

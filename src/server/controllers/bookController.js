@@ -60,7 +60,11 @@ var bookController = function (Book) {
 				books.forEach(function (element, index, array) {
 					var newBook = element.toJSON();
 					newBook.links = {};
-					newBook.links.self = 'http://' + req.headers.host + '/api/books/' + newBook._id;
+					var self = 'http://' + req.headers.host + '/api/books/' + newBook._id;
+					newBook.links.self = self;
+					if (newBook.coverArtId) {
+						newBook.links.cover = self + '/Cover/' + newBook.coverArtId;
+					}
 					returnBooks.push(newBook);
 				});
 				res.json(returnBooks);
@@ -71,16 +75,6 @@ var bookController = function (Book) {
 	var getBook = function (req, res) {
 		var returnBook = req.book.toJSON();
 		returnBook.links = {};
-
-		if (returnBook.coverArtId) {
-			Grid.mongo = mongoose.mongo;
-			var conn = mongoose.connection;
-			/* jshint -W064 */
-			var gfs = Grid(conn.db);
-			gfs.findOne({_id: returnBook.coverArtId}, function (err, file) {
-				console.log(file);
-			});
-		}
 
 		var newLink = 'http://' + req.headers.host + '/api/books?genre=' + returnBook.genre;
 		returnBook.links.FilterByThisGenre = newLink.replace(' ', '%20');
