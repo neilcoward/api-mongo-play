@@ -26,17 +26,24 @@ var routes = function (Book) {
 	});
 
 	bookRouter.use('/Books/:bookId/Cover/:coverId', function (req, res, next) {
-		getFile(function (error, data) {
-			res.writeHead(200, { 'Content-Type': 'image/png' });
-			res.end(data, 'binary');
-		}, req.params.coverId);
+		getFile(function (err, data) {
+			if (data) {
+				res.writeHead(200, { 'Content-Type': 'image/png' });
+				res.end(data, 'binary');
+			}
+		}, req.params.coverId, res);
 	});
 
-	var getFile = function (callback, id) {;
+	var getFile = function (callback, id, res) {;
 		var db = mongoose.connection.db;
 		var GridStore = mongoose.mongo.GridStore;
 		var gs = new GridStore(db, new mongoose.Types.ObjectId(id), 'r');
 		gs.open(function (err, gs) {
+			if (err) {
+				console.log('Ahh! An Error!');
+				res.status(404).send('no cover found');
+				return;
+			}
 			gs.read(callback);
 		});
 	};

@@ -76,6 +76,11 @@ var bookController = function (Book) {
 		var returnBook = req.book.toJSON();
 		returnBook.links = {};
 
+		var self = 'http://' + req.headers.host + '/api/books/' + returnBook._id;
+		if (returnBook.coverArtId) {
+			returnBook.links.cover = self + '/Cover/' + returnBook.coverArtId;
+		}
+
 		var newLink = 'http://' + req.headers.host + '/api/books?genre=' + returnBook.genre;
 		returnBook.links.FilterByThisGenre = newLink.replace(' ', '%20');
 		res.json(returnBook);
