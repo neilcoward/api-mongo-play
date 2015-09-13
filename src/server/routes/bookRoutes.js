@@ -34,16 +34,16 @@ var routes = function (Book) {
 		}, req.params.coverId, res);
 	});
 
-	var getCoverImage = function (callback, id, res) {;
+	var getCoverImage = function (callback, id, res) {
 		var db = mongoose.connection.db;
 		var GridStore = mongoose.mongo.GridStore;
 
 		if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-  				console.log('not a valid ObjectId!');
-				res.status(404).send('no cover found');
-				return;
-			}
-			
+			console.log('not a valid ObjectId!');
+			res.status(404).send('no cover found');
+			return;
+		}
+
 		var gs = new GridStore(db, new mongoose.Types.ObjectId(id), 'r');
 		gs.open(function (err, gs) {
 			if (err) {
