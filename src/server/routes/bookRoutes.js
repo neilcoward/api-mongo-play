@@ -42,17 +42,17 @@ var routes = function (Book) {
 			console.log('not a valid ObjectId!');
 			res.status(404).send('no cover found');
 			return;
+		} else {
+			var gs = new GridStore(db, new mongoose.Types.ObjectId(id), 'r');
+			gs.open(function (err, gs) {
+				if (err) {
+					console.log('Ahh! An Error!');
+					res.status(404).send('no cover found');
+					return;
+				}
+				gs.read(callback);
+			});
 		}
-
-		var gs = new GridStore(db, new mongoose.Types.ObjectId(id), 'r');
-		gs.open(function (err, gs) {
-			if (err) {
-				console.log('Ahh! An Error!');
-				res.status(404).send('no cover found');
-				return;
-			}
-			gs.read(callback);
-		});
 	};
 
 	bookRouter.route('/Books/:bookId')
