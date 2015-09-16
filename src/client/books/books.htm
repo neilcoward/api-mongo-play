@@ -1,14 +1,17 @@
 <!doctype html>
-<html lang="en" ng-app="app.book">
+<html lang="en" ng-app="app">
 
 <head>
   <meta charset="utf-8">
   <title>My HTML File</title>
   <link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap.css">
   <script src="../../../bower_components/angular/angular.js"></script>
+  <script src="../../../bower_components/angular-resource/angular-resource.js"></script>
   <script src="../app.module.js"></script>
+    <script src="../data/BookResource.js"></script>
   <script src="book.module.js"></script>
   <script src="bookController.js"></script>
+
 
 </head>
 
@@ -16,6 +19,7 @@
 
   <p>Nothing here {{'yet' + '!'}}</p>
   <div ng-controller="Books as vm">
+    <p>{{vm.error}}</p>
     <ul>
       <li data-ng-repeat="book in vm.books">
         <span>{{book.title}}</span>

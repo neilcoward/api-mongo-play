@@ -8,6 +8,7 @@
          * and then when app.dashboard tries to use app.data,
          * it's components are available.
          */
+        'app.data',
 
         /*
          * Everybody has access to these.
@@ -20,6 +21,7 @@
         /*
          * Feature areas
          */
-        'app.books'
+
+        'app.book'
     ]);
 })();

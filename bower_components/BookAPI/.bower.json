@@ -1,0 +1,13 @@
+{
+  "name": "BookAPI",
+  "_release": "893046bbfd",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "893046bbfd8ad9b374b4296eaedfcee37abb376d"
+  },
+  "_source": "/Users/Kelly/Documents/Neil/dev/BookAPI",
+  "_target": "*",
+  "_originalSource": "/Users/Kelly/Documents/Neil/dev/BookAPI",
+  "_direct": true
+}

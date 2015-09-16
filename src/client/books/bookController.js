@@ -3,23 +3,26 @@
 
 	angular
 		.module('app.book')
-		.controller('Books', Books);
+		.controller('Books', ['$http','BookResource', Books]);
 
-	function Books($http) {
+	function Books($http, BookResource) {
 		var vm = this;
-
+		vm.error = '';
         vm.title = 'Books';
-		////////////////
-		vm.books = activate();
+		vm.books = [];
 
-		function activate() {
-			$http({ method: 'GET', url: 'http://localhost:3000/api/books', headers: { 'X-Parse-Application-Id': 'XXXXXXXXXXXXX', 'X-Parse-REST-API-Key': 'YYYYYYYYYYYYY' } })
-				.success(function (data, status) {
-					vm.books = data;
-				})
-				.error(function (data, status) {
-					alert("Error");
-				});
-        };
+		vm.books = BookResource.query();
+/*
+		var onBooksComplete = function (reponse) {
+			vm.books = reponse.data;
+		};
+
+		var onError = function(reason){
+			vm.error = 'Could not fetch books';
+		};
+
+		$http.get('http://localhost:3000/api/books')
+			.then(onBooksComplete, onError);
+			*/
 	}
 })();
