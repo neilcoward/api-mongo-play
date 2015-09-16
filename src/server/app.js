@@ -1,6 +1,7 @@
 var express = require('express'),
 	mongoose = require('mongoose'),
-	bodyParser = require('body-parser');
+	bodyParser = require('body-parser'),
+	cors = require('cors');
 
 var db;
 if (process.env.ENV === 'Test') {
@@ -13,6 +14,7 @@ else {
 var Book = require('./models/bookModel');
 
 var app = express();
+app.use(cors());
 var port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));

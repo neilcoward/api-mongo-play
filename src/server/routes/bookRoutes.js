@@ -61,6 +61,9 @@ var routes = function (Book) {
 		.patch(bookController.patch)
 		.delete(bookController.delete);
 
+	bookRouter.route('/Books/:bookId/Cover/:coverId')
+	.get();
+
 	return bookRouter;
 };
 

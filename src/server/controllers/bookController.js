@@ -60,9 +60,11 @@ var bookController = function (Book) {
 				books.forEach(function (element, index, array) {
 					var newBook = element.toJSON();
 					newBook.links = {};
+					newBook.hasImage = false;
 					var self = 'http://' + req.headers.host + '/api/books/' + newBook._id;
 					newBook.links.self = self;
 					if (newBook.coverArtId) {
+						newBook.hasImage = true;
 						newBook.links.cover = self + '/Cover/' + newBook.coverArtId;
 					}
 					returnBooks.push(newBook);
@@ -125,6 +127,23 @@ var bookController = function (Book) {
 	};
 
 	var deleteBook = function (req, res) {
+		var book = req.book.toJSON();
+		if (book.coverArtId) {
+			Grid.mongo = mongoose.mongo;
+			var conn = mongoose.connection;
+			/* jshint -W064 */
+			var gfs = Grid(conn.db);
+
+			var imageToDelete = { _id: book.coverArtId };
+			gfs.remove(imageToDelete, function (err) {
+					if (err) {
+						return;
+					} else {
+						console.log('success');
+					}
+				});
+		}
+
 		req.book.remove(function (err) {
 			if (err) {
 				res.status(500).send(err);

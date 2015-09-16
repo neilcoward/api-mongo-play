@@ -20,7 +20,9 @@
       <li data-ng-repeat="book in vm.books">
         <span>{{book.title}}</span>
         <p>{{book.author}}</p>
-        <img data-ng-src="{{book.links.cover}}" />
+        <div ng-show="{{book.hasImage}}">
+          <img data-ng-src="{{book.links.cover}}" />
+        </div>
       </li>
     </ul>
     </ul>
