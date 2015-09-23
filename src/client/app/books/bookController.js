@@ -3,9 +3,9 @@
 
 	angular
 		.module('app.book')
-		.controller('Books', ['$http','BookResource', Books]);
+		.controller('Book', ['$http','BookResource', Book]);
 
-	function Books($http, BookResource) {
+	function Book($http, BookResource) {
 		var vm = this;
 		vm.error = '';
         vm.title = 'Books';
@@ -23,6 +23,6 @@
 
 		$http.get('http://localhost:3000/api/books')
 			.then(onBooksComplete, onError);
-			*/
+*/
 	}
 })();

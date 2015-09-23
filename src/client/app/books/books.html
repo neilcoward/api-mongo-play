@@ -1,0 +1,21 @@
+<p>Nothing here {{'yet' + '!'}}</p>
+<div ng-controller="Book as vm">
+  <p>{{vm.error}}</p>
+
+  <table class="table table-striped">
+    <tr class="info">
+      <th class="info">Author</th>
+      <th class="info">Title</th>
+      <th class="info">Cover</th>
+    </tr>
+    <tr ng-class-odd="'success'" ng-class-even="'warning'" data-ng-repeat="book in vm.books">
+      <td ng-class-odd="'success'" ng-class-even="'warning'">{{book.author}}</td>
+      <td ng-class-odd="'success'" ng-class-even="'warning'">{{book.title}}</td>
+      <td ng-class-odd="'success'" ng-class-even="'warning'">
+        <div ng-show="{{book.hasImage}}">
+          <img data-ng-src="{{book.links.cover}}" />
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
