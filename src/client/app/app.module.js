@@ -8,6 +8,10 @@
             .when('/', {
                 templateUrl: 'app/books/books.html',
                 controller: 'Book'
+            })
+            .when('/AddBook', {
+                templateUrl: 'app/books/addBook.html',
+                controller: 'AddBook'
             });
     }]);
 })();
