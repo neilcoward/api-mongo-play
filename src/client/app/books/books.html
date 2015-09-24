@@ -10,7 +10,9 @@
     </tr>
     <tr ng-class-odd="'success'" ng-class-even="'warning'" data-ng-repeat="book in vm.books">
       <td ng-class-odd="'success'" ng-class-even="'warning'">{{book.author}}</td>
-      <td ng-class-odd="'success'" ng-class-even="'warning'">{{book.title}}</td>
+      <td ng-class-odd="'success'" ng-class-even="'warning'">
+        <a href="home#/EditBook/{{book._id}}">{{book.title}}</a>
+      </td>
       <td ng-class-odd="'success'" ng-class-even="'warning'">
         <div ng-show="{{book.hasImage}}">
           <img data-ng-src="{{book.links.cover}}" />

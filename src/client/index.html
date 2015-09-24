@@ -1,10 +1,21 @@
 <!doctype html>
-<html lang="en" ng-app="app">
+<html data-ng-app="app" lang="en">
 
 <head>
   <meta charset="utf-8">
   <title>Books List</title>
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css" type="text/css">
+</head>
+
+<body>
+  <h1>Books Angular</h1>
+  <p>Layout {{'works' + '!'}}</p>
+  <ul class="inline">
+    <li><a href="/Home">Home</a></li>
+    <li><a href="#/AddBook">Add New</a></li>
+  </ul>
+  <div ng-view></div>
+
   <script src="../../bower_components/angular/angular.js"></script>
   <script src="../../bower_components/angular-resource/angular-resource.js"></script>
   <script src="../../bower_components/angular-route/angular-route.js"></script>
@@ -13,12 +24,7 @@
   <script src="app/data/BookResource.js"></script>
   <script src="app/books/bookController.js"></script>
   <script src="app/books/addBookController.js"></script>
-</head>
-
-<body>
-  <h1>Books Angular</h1>
-  <p>Anything here {{'yet' + '!'}}</p>
-  <div ng-view></div>
+  <script src="app/books/editBookController.js"></script>
 </body>
 
 </html>

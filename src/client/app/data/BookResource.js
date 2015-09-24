@@ -6,11 +6,14 @@
         .factory('BookResource', ['$resource', BookResource]);
 
 		function BookResource($resource) {
-			return $resource('http://localhost:3000/api/books/:book_id', {book_id: '@book_id'},
+			return $resource('http://localhost:3000/api/books/:bookId', {bookId: '@bookId'},
 				{
-					'get': { method: 'get' },
+					'get': { method: 'GET' },
 					'save':   {method:'POST'},
-					'update':   {method:'PUT'}
+					'update':   {method:'PUT',
+					params: {
+						bookId: "@bookId"
+						}}
 				});
 		};
 }());
