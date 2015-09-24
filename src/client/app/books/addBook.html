@@ -1,31 +1,42 @@
 <h3>Add Book</h3>
 
-<form class="form-horizontal" role="form" ng-controller="AddBook">
+<form class="form-horizontal" role="form" ng-controller="AddBook as vm">
 	<div class="form-group">
 		<label for="bookTitle" class="col-sm-1 control-label">Title</label>
 
 		<div class="col-sm-4">
-			<input type="text" class="form-control" id="bookTitle" placeholder="Title">
+			<input type="text" data-ng-model="vm.book.title" class="form-control" id="bookTitle" placeholder="Title">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="bookAuthor" class="col-sm-1 control-label">Author</label>
 
 		<div class="col-sm-4">
-			<input type="text" class="form-control" id="bookauthor" placeholder="Author">
+			<input type="text" data-ng-model="vm.book.author" class="form-control" id="bookauthor" placeholder="Author">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="bookGenre" class="col-sm-1 control-label">Genre</label>
 
 		<div class="col-sm-4">
-			<input type="text" class="form-control" id="bookgenre" placeholder="Genre">
+			<input type="text" data-ng-model="vm.book.genre" class="form-control" id="bookGenre" placeholder="Genre">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="bookCover" class="col-sm-1 control-label">Cover Path</label>
+
+		<div class="col-sm-4">
+			<input type="text" data-ng-model="vm.book.coverArtPath" class="form-control" id="bookCover" placeholder="Cover Path">
+			<div>
+				<img data-ng-src="{{vm.book.coverArtPath}}" />
+			</div>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<div class="col-sm-offset-1 col-sm-5">
-			<button class="btn btn-default">Save</button>
+			<a href="#/" class="btn">Cancel</a>
+			<button data-ng-click="vm.addBook(vm.book)" ng-disabled="isClean() || myForm.$invalid" class="btn btn-primary">Save</button>
 		</div>
 	</div>
 </form>

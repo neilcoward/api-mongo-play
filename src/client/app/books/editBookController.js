@@ -11,19 +11,14 @@
 		vm.bookId = $routeParams.bookId;
 		vm.currentBook = BookResource.get({ bookId: vm.bookId });
 		vm.saveBook = saveBook;
+		vm.deleteBook = deleteBook;
 
 		function saveBook() {
 			BookResource.update({ bookId: vm.bookId }, vm.currentBook);
 		}
+
+		function deleteBook() {
+			BookResource.delete({ bookId: vm.bookId }, vm.currentBook);
+		}
 	}
-	/*
-			BookResource.save({
-				title: 'Espedair Street',
-				author: 'Iain Banks',
-				genre: 'fiction',
-				coverArtPath: 'http://ecx.images-amazon.com/images/I/4135ufJ2b-L._AA160_.jpg'
-			}, function (data) {
-				alert('success');
-			});
-	*/
 })();

@@ -3,9 +3,15 @@
 
 	angular
 		.module('app.book')
-		.controller('AddBook', ['$http','BookResource', AddBook]);
+		.controller('AddBook', ['BookResource', AddBook]);
 
-	function AddBook($http, BookResource) {
+	function AddBook(BookResource) {
+		var vm = this;
+		vm.error = '';
+		vm.addBook = addBook;
 
+		function addBook() {
+			BookResource.save(vm.book);
+		}
 	}
 })();

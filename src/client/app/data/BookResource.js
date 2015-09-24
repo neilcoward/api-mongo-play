@@ -13,6 +13,10 @@
 					'update':   {method:'PUT',
 					params: {
 						bookId: "@bookId"
+						}},
+					'delete':   {method:'DELETE',
+					params: {
+						bookId: "@bookId"
 						}}
 				});
 		};
