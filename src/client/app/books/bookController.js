@@ -3,14 +3,14 @@
 
 	angular
 		.module('app.book')
-		.controller('Book', ['BookResource', Book]);
+		.controller('Book', ['bookList', Book]);
 
-	function Book(BookResource) {
+	function Book(bookList) {
 		var vm = this;
 		vm.error = '';
         vm.title = 'Books';
 		vm.books = [];
 
-		vm.books = BookResource.query();
+		vm.books = bookList;
 	}
 })();

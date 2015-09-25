@@ -3,9 +3,9 @@
 
 	angular
 		.module('app.book')
-		.controller('EditBook', ['$routeParams', 'BookResource', EditBook]);
+		.controller('EditBook', ['$routeParams', 'BookResource', '$location', EditBook]);
 
-	function EditBook($routeParams, BookResource) {
+	function EditBook($routeParams, BookResource, $location) {
 		var vm = this;
 		vm.error = '';
 		vm.bookId = $routeParams.bookId;
@@ -15,6 +15,7 @@
 
 		function saveBook() {
 			BookResource.update({ bookId: vm.bookId }, vm.currentBook);
+			 $location.path('#/');
 		}
 
 		function deleteBook() {
