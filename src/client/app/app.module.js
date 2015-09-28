@@ -31,11 +31,13 @@
             })
             .when('/EditBook/:bookId', {
                 templateUrl: 'app/books/editBook.html',
-                controller: 'EditBook'
+                controller: 'EditBook',
+                controllerAs: 'vm'
             })
             .when('/AddBook', {
                 templateUrl: 'app/books/addBook.html',
-                controller: 'AddBook'
+                controller: 'AddBook',
+                controllerAs: 'vm'
             })
             .otherwise({
                 redirectTo: '/'

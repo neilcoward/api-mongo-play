@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Grid = require('gridfs-stream');
 var fs = require('fs');
 var path = require('path');
+var http = require('http');
 
 var bookController = function (Book) {
 	var post = function (req, res) {
@@ -136,12 +137,12 @@ var bookController = function (Book) {
 
 			var imageToDelete = { _id: book.coverArtId };
 			gfs.remove(imageToDelete, function (err) {
-					if (err) {
-						return;
-					} else {
-						console.log('success');
-					}
-				});
+				if (err) {
+					return;
+				} else {
+					console.log('success');
+				}
+			});
 		}
 
 		req.book.remove(function (err) {
