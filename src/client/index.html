@@ -8,13 +8,25 @@
 </head>
 
 <body>
-  <h1>Books Angular</h1>
-  <p>Layout {{'works' + '!'}}</p>
-  <ul class="inline">
-    <li><a href="#/Home">Home</a></li>
-    <li><a href="#/AddBook">Add New</a></li>
-  </ul>
-  <div ng-view></div>
+  <h1>Books App</h1>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2">
+        <div>
+          <ul class="nav of nav-stacked">
+            <li class="tq">Menu</li>
+            <li class="active"><a href="#/Home">Home</a></li>
+            <li><a href="#/AddBook">Add New</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="col-lg-10">
+        <div ng-view></div>
+      </div>
+    </div>
+  </div>
 
   <script src="../../bower_components/angular/angular.js"></script>
   <script src="../../bower_components/angular-resource/angular-resource.js"></script>
