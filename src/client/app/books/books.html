@@ -1,8 +1,9 @@
 <div>
   <p>{{vm.error}}</p>
 
-  <div>
-    <input class="form-control" placeholder="Search..." type="text" ng-model="vm.query">
+  <div class="input-group">
+    <span class="input-group-addon glyphicon glyphicon-search" id="basic-addon1"></span>
+    <input type="text" class="form-control" placeholder="Search..." aria-describedby="basic-addon1" ng-model="vm.query">
   </div>
 
   <div class="row text-center">
@@ -16,36 +17,20 @@
         </div>
 
         <div class="caption">
-          <h3 ng-bind-html="book.title | highlight: vm.query">{{book.title}}</h3>
+          <h4 ng-bind-html="book.title | highlight: vm.query">{{book.title}}</h4>
           <p ng-bind-html="book.author | highlight: vm.query">{{book.author}}</p>
           <p ng-bind-html="book.genre | highlight: vm.query">{{book.genre}}</p>
           <p>
-            <a href="home#/EditBook/{{book._id}}" class="btn btn-primary">Edit</a>
+            <a href="home#/EditBook/{{book._id}}" class="btn btn-primary">
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Edit</span>
+            </a>
+            <button ng-click="vm.deleteBook(book._id)" class="btn btn-danger">
+              <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+              <span class="glyphicon-class">Delete</span>
+            </button>
           </p>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!--
-  <table class="table table-striped">
-    <tr class="info">
-      <th class="info">Author</th>
-      <th class="info">Title</th>
-      <th class="info">Cover</th>
-      <th class="info">Action</th>
-    </tr>
-    <tr ng-class-odd="'success'" ng-class-even="'information'" data-ng-repeat="book in vm.books | filter:vm.search">
-      <td ng-class-odd="'success'" ng-class-even="'information'" ng-bind-html="book.author | highlight: vm.query">{{book.author}}</td>
-      <td ng-class-odd="'success'" ng-class-even="'information'" ng-bind-html="book.title | highlight: vm.query">
-        {{book.title}}
-      </td>
-      <td ng-class-odd="'success'" ng-class-even="'information'">
-        <div ng-show="{{book.hasImage}}">
-          <img data-ng-src="{{book.links.cover}}" />
-        </div>
-      </td>
-      <td> <a href="home#/EditBook/{{book._id}}">Edit/Delete</a></td>
-    </tr>
-  </table>
- -->

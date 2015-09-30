@@ -35,8 +35,14 @@
 
 	<div class="form-group">
 		<div class="col-sm-offset-1 col-sm-5">
-			<a href="#/" class="btn">Cancel</a>
-			<button data-ng-click="vm.addBook(vm.book)" ng-disabled="isClean() || myForm.$invalid" class="btn btn-primary">Save</button>
+			<a href="#/" class="btn btn-default">
+				<span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>
+				<span class="glyphicon-class">Cancel</span>
+			</a>
+			<button data-ng-click="vm.addBook(vm.book)" ng-disabled="isClean() || myForm.$invalid" class="btn btn-primary">
+				<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+				<span class="glyphicon-class">Add</span>
+			</button>
 		</div>
 	</div>
 </form>
