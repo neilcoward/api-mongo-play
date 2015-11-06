@@ -21,13 +21,13 @@
           <p ng-bind-html="book.author | highlight: vm.query">{{book.author}}</p>
           <p ng-bind-html="book.genre | highlight: vm.query">{{book.genre}}</p>
           <p>
-            <a href="home#/EditBook/{{book._id}}" class="btn btn-primary">
-              <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Edit</span>
+            <a href="home#/EditBook/{{book._id}}" style="color:blue">
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
             </a>
-            <button ng-click="vm.deleteBook(book._id)" class="btn btn-danger">
-              <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
-              <span class="glyphicon-class">Delete</span>
-            </button>
+            <a href="" ng-click="vm.deleteBook(book._id)">
+              <span class="glyphicon glyphicon-trash"  style="color:red" aria-hidden="true"></span>
+            <a/>
+            <button type="button" class="btn btn-danger btn-xs btn-round"><span class="glyphicon glyphicon-trash"></span></button>
           </p>
         </div>
       </div>

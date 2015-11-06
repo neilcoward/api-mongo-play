@@ -3,9 +3,9 @@
 
     angular
         .module('app.data', ['ngResource'])
-        .factory('BookResource', ['$resource', BookResource]);
-
-		function BookResource($resource) {
+        .factory('BookResource', ['$resource', '$q', BookResource]);
+//http://plnkr.co/edit/lIQw4uogcoMpcuHTWy2U?p=preview
+		function BookResource($resource, $q) {
 			return $resource('http://localhost:3000/api/books/:bookId', {bookId: '@bookId'},
 				{
 					'get': { method: 'GET' },

@@ -26,7 +26,7 @@
     <div class="form-group">
       <div class="col-sm-offset-1 col-sm-5">
         <a href="#/" class="btn btn-default">
-          <span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>
+          <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
           <span class="glyphicon-class">Cancel</span>
         </a>
         <button data-ng-click="vm.saveBook()" ng-disabled="isClean() || myForm.$invalid" class="btn btn-primary">
@@ -34,7 +34,7 @@
           <span class="glyphicon-class">Save</span>
         </button>
         <button ng-click="vm.deleteBook()" class="btn btn-danger">
-          <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
           <span class="glyphicon-class">Delete</span>
         </button>
       </div>

@@ -20,7 +20,7 @@
 
 		function deleteBook() {
 			BookResource.delete({ bookId: vm.bookId }, vm.currentBook);
-			$location.path('#/');
+			$location.path('#/home');
 		}
 	}
 })();
